@@ -76,9 +76,20 @@ def display_multiplex(counter):
         time.sleep(0.005)  # Small delay to let the digit light up
         GPIO.output(digits[i], GPIO.LOW)   # Deactivate the digit
 
+while True:
+    try:
+        start_number = int(input("Enter a starting number (0-9999): "))
+        if 0 <= start_number <= 9999:
+            break
+        else:
+            print("Please enter a number between 0 and 9999.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number between 0 and 9999.")
+
+
 # Main program
 try:
-    counter = 0
+    counter = start_number
 
     while True:
         # Check if the switch is pressed
